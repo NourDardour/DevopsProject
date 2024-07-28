@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ recruiter.name }}</h1>
+<p>Company: {{ recruiter.company }}</p>
+<p>Email: {{ recruiter.email }}</p>
+<h2>Reviews</h2>
+{% for review in recruiter.reviews.all %}
+    <div class="review">
+        <p>{{ review.content }}</p>
+        <small>Rating: {{ review.rating }} / 5</small>
+    </div>
+{% endfor %}
+<a href="{% url 'review_create' %}?recruiter_id={{ recruiter.id }}">Add a Review</a>
+{% endblock %}

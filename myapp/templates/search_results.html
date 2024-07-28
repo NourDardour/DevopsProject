@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+<h3>Companies</h3>
+<ul>
+    {% for company in companies %}
+        <li><a href="{% url 'company_detail' company.pk %}">{{ company.name }}</a></li>
+    {% empty %}
+        <li>No companies found.</li>
+    {% endfor %}
+</ul>
+
+<h3>Recruiters</h3>
+<ul>
+    {% for recruiter in recruiters %}
+        <li><a href="{% url 'recruiter_detail' recruiter.pk %}">{{ recruiter.name }}</a></li>
+    {% empty %}
+        <li>No recruiters found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

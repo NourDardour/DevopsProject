@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Welcome to Company Reviews</h1>
+<p>Your go-to platform for honest company and recruiter reviews.</p>
+<a href="{% url 'company_list' %}">Browse Companies</a> | 
+<a href="{% url 'recruiter_list' %}">Browse Recruiters</a>
+{% endblock %}

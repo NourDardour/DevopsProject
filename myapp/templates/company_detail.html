@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ company.name }}</h1>
+<p>Location: {{ company.location }}</p>
+<p>Industry: {{ company.industry }}</p>
+<h2>Reviews</h2>
+{% for review in company.reviews.all %}
+    <div class="review">
+        <p>{{ review.content }}</p>
+        <small>Rating: {{ review.rating }} / 5</small>
+    </div>
+{% endfor %}
+<a href="{% url 'review_create' %}?company_id={{ company.id }}">Add a Review</a>
+{% endblock %}
