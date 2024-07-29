@@ -1,0 +1,52 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+
+nav .logo {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    margin: 2em;
+}
+
+.pagination {
+    margin-top: 1em;
+}
+
+.pagination .step-links a {
+    margin: 0 0.5em;
+}
+
+.pagination .step-links span {
+    margin: 0 0.5em;
+}
