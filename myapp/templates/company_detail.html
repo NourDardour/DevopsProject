@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <h1>{{ company.name }}</h1>
 <p>Location: {{ company.location }}</p>
 <p>Industry: {{ company.industry }}</p>
+
 <h2>Reviews</h2>
-{% for review in company.reviews.all %}
-    <div class="review">
-        <p>{{ review.content }}</p>
-        <small>Rating: {{ review.rating }} / 5</small>
-    </div>
-{% endfor %}
-<a href="{% url 'review_create' %}?company_id={{ company.id }}">Add a Review</a>
+<ul>
+    {% for review in reviews %}
+    <li>
+        <strong>{{ review.user.username }}:</strong> {{ review.comment }} (Rating: {{ review.rating }})
+    </li>
+    {% endfor %}
+</ul>
+{% if user.is_authenticated %}
+<a href="{% url 'add_review' company.id %}">Add a review</a>
+{% else %}
+<p><a href="{% url 'login' %}">Log in</a> to add a review.</p>
+{% endif %}
 {% endblock %}

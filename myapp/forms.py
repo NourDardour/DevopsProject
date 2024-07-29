@@ -1,17 +1,27 @@
 from django import forms
-from .models import Review
+from .models import Company, Review, Recruiter, RecruiterReview
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = ['name', 'location', 'industry']
 
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['user', 'rating', 'text']
-        widgets = {
-            'text': forms.Textarea(attrs={'rows': 4, 'cols': 40}),
-            'rating': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-        }
+        fields = ['company', 'rating', 'comment']
+
+class RecruiterForm(forms.ModelForm):
+    class Meta:
+        model = Recruiter
+        fields = ['name', 'company', 'email']
+
+class RecruiterReviewForm(forms.ModelForm):
+    class Meta:
+        model = RecruiterReview
+        fields = ['recruiter', 'rating', 'comment']
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)
     email = forms.EmailField()
-    subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea)
